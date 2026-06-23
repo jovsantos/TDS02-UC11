@@ -23,6 +23,19 @@
             return (int)Math.Ceiling(resultado);
         }
 
+        public int SubtrairPositivoOuZero(int a, int b)
+        {
+            if (b > a)
+            {
+                return 0; // Retorna zero se o resultado da subtração for negativo
+            }
+            return a - b;   
+        }
+
+        public double PotenciaDeUmNumero(int @base, int expoente) 
+        {
+            return Math.Pow(@base, expoente);
+        }
 
     }
 }

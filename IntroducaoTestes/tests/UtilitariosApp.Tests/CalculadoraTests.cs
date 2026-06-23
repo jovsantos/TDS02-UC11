@@ -31,7 +31,7 @@ namespace UtilitariosApp.Tests
             var calculadora = new Calculadora();
             var resultado = calculadora.Divisao(5, 2); // 5 / 2 = 2.5, porem , como o método deve retornar um inteiro arredondado para cima, o resultado esperado é 3
 
-            Assert.Equal(3, resultado); 
+            Assert.Equal(3, resultado);
         }
 
         [Fact]
@@ -41,6 +41,46 @@ namespace UtilitariosApp.Tests
             var resultado = calculadora.Divisao(5, 0); // 5 / 0 = indefinido
 
             Assert.Equal(5, resultado);
+        }
+
+        [Fact]
+        public void Subtrair_DeveRetornarASubtracao()
+        {
+            Calculadora c1 = new Calculadora();
+            var resultado = c1.SubtrairPositivoOuZero(6, 2); // 6 - 2 = 4, resultado esperado é 4
+
+            Assert.Equal(4, resultado);
+
+        }
+
+        [Fact]
+
+        public void Subtrair_AoSubtrairValorMaiorDeMenor_ResultadoEZero()
+        {
+            Calculadora c1 = new Calculadora();
+
+            var resultado = c1.SubtrairPositivoOuZero(2, 6); // 2 - 6 = -4, resultado esperado é zero, pois o método deve retornar zero ou um valor positivo
+            Assert.Equal(0, resultado);
+        }
+
+        [Theory]
+        [InlineData(10, 3, 1000)]
+        [InlineData(10, 2, 100)]                                                                                                                                                                                         
+        [InlineData(5, 2, 25)]
+        [InlineData(5, 3, 125)]
+        [InlineData(2, 5, 32)]
+        [InlineData(2, -2, 0.25)]
+        [InlineData(2, 0, 1)]
+        [InlineData(-32, 0, 1)]
+        [InlineData(15, 1, 15)]
+        [InlineData(-15, 1, -15)]
+
+        public void PotenciaDeUmNumero_DeveRetornarAPotencia(int a, int b, double pot)
+        {
+            Calculadora c1 = new Calculadora();
+            var resultado = c1.PotenciaDeUmNumero(a, b);
+
+            Assert.Equal(pot, resultado);
         }
 
     }
