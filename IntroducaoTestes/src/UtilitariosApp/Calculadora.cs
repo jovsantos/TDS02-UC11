@@ -37,5 +37,15 @@
             return Math.Pow(@base, expoente);
         }
 
+        public double Raiz(int a)
+        {
+
+            if (a < 0) 
+            {
+                throw new ArgumentException("Não é possivel calcular raiz de 0 ou negativo");
+            }
+            return Math.Sqrt(a);
+        }
+
     }
 }
